@@ -1,7 +1,5 @@
 package com.example.android.quakereport;
 
-import android.util.Log;
-
 /**
  * Created by David on 1/3/2017.
  */
@@ -9,8 +7,7 @@ import android.util.Log;
 public class Earthquake {
 
     /**
-     * The magnitude of earthquake.
-     */
+     * The magnitude of earthquake. */
     double mMagnitude;
 
     /** The location of the earthquake, of type {@link String}. */
@@ -18,6 +15,9 @@ public class Earthquake {
 
     /** The date of the earthquake} */
     private long mTimeInMilliseconds;
+
+    /** The earthquake url. */
+    private String mUrl;
 
     /**
      * Constructs a new {@link Earthquake} object.
@@ -27,11 +27,12 @@ public class Earthquake {
      * @param timeInMilliseconds is the time in milliseconds (from the Epoch) when the
      *                           earthquake happened
      */
-    public Earthquake(double magnitude, String location, long timeInMilliseconds) {
+    public Earthquake(double magnitude, String location, long timeInMilliseconds, String url) {
 
-        mMagnitude = magnitude;
-        mLocation = location;
+        mMagnitude          = magnitude;
+        mLocation           = location;
         mTimeInMilliseconds = timeInMilliseconds;
+        mUrl                = url;
     }
 
     public double getMagnitude() {
@@ -44,4 +45,6 @@ public class Earthquake {
     public long getTimeInMilliseconds() {
         return mTimeInMilliseconds;
     }
+
+    public String getUrl() {return mUrl; }
 }
