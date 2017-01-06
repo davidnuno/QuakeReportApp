@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,6 +20,22 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
     public EarthquakeAdapter(Context context, List<Earthquake> objects) {
         super(context, 0, objects);
+    }
+
+    /**
+     * Return the formatted date string (i.e. "Mar 3, 1984") from a Date object.
+     */
+    private String formatDate(Date dateObject) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
+        return dateFormat.format(dateObject);
+    }
+
+    /**
+     * Return the formatted date string (i.e. "4:30 PM") from a Date object.
+     */
+    private String formatTime(Date dateObject) {
+        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
+        return timeFormat.format(dateObject);
     }
 
     @NonNull
@@ -50,11 +66,22 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
         locationView.setText(currentEarthquake.getLocation());
 
+        Date dateObject = new Date(currentEarthquake.getTimeInMilliseconds());
+
         //Find the TextView with view ID date.
         TextView dateView = (TextView) listItemView.findViewById(R.id.date);
 
-        dateView.setText(currentEarthquake.getDate());
+        String formattedDate = formatDate(dateObject);
 
+        dateView.setText(formattedDate);
+
+        TextView timeView = (TextView) listItemView.findViewById(R.id.time);
+
+        String formattedTime = formatTime(dateObject);
+
+        timeView.setText(formattedTime);
+
+        // Return the list item view that is now showing the appropriate data.
         return listItemView;
     }
 }
