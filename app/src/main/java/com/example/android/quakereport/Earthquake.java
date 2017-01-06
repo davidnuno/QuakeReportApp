@@ -1,6 +1,6 @@
 package com.example.android.quakereport;
 
-import static com.example.android.quakereport.R.id.date;
+import android.util.Log;
 
 /**
  * Created by David on 1/3/2017.
@@ -8,17 +8,15 @@ import static com.example.android.quakereport.R.id.date;
 
 public class Earthquake {
 
-    private String locationOffset;
-
-    private String primaryLocation;
-
-    /** The magnitude of earthquake, of type {@link String}. */
-    private String mMagnitude;
+    /**
+     * The magnitude of earthquake.
+     */
+    double mMagnitude;
 
     /** The location of the earthquake, of type {@link String}. */
     private String mLocation;
 
-    /** The date of the earthquake}, of type {@link String}. */
+    /** The date of the earthquake} */
     private long mTimeInMilliseconds;
 
     /**
@@ -29,21 +27,15 @@ public class Earthquake {
      * @param timeInMilliseconds is the time in milliseconds (from the Epoch) when the
      *                           earthquake happened
      */
-    public Earthquake(String magnitude, String location, long timeInMilliseconds) {
+    public Earthquake(double magnitude, String location, long timeInMilliseconds) {
 
         mMagnitude = magnitude;
         mLocation = location;
         mTimeInMilliseconds = timeInMilliseconds;
     }
 
-    public void locationParser(String parse) {
-
-        parse.contains("of");
-    }
-
-    public String getMagnitude() {
-        return mMagnitude;
-    }
+    public double getMagnitude() {
+        return mMagnitude; }
 
     public String getLocation() {
         return mLocation;
