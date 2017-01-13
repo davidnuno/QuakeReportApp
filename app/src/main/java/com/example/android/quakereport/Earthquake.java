@@ -35,16 +35,32 @@ public class Earthquake {
         mUrl                = url;
     }
 
+    /**
+     * Getter for earthquake magnitude.
+     */
     public double getMagnitude() {
-        return mMagnitude; }
 
+        return mMagnitude;
+    }
+
+    /**
+     * Getter for earthquake location. */
     public String getLocation() {
+
         return mLocation;
     }
 
+    /**
+     * Getter for earthquake time in milliseconds. */
     public long getTimeInMilliseconds() {
+
         return mTimeInMilliseconds;
     }
 
-    public String getUrl() {return mUrl; }
+    /**
+     * Getter for earthquake {@link java.net.URL}.
+     */
+    public String getUrl() {
+
+        return mUrl; }
 }
